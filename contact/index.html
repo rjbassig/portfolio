@@ -13,24 +13,19 @@
 
     <h1>Contact</h1>
 
-    <form action="mailto:rjsbassig@gmail.com" method="POST" enctype="text/plain">
-
-        <label>
-            Email:
-            <input type="email" name="email" value="example@email.com">
-        </label>
+    <form action="mailto:rjsbassig@gmail.com" method="GET">
 
         <label>
             Subject:
-            <input name="subject" value="Hello">
+            <input type="text" name="subject" value="Hello" required>
         </label>
 
         <label>
             Message:
-            <textarea name="body">Hi Randall!</textarea>
+            <textarea name="body" required>Hi Randall!</textarea>
         </label>
 
-        <button>Send</button>
+        <button type="submit">Send</button>
 
     </form>
 
