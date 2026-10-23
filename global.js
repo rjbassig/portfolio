@@ -91,3 +91,59 @@ form?.addEventListener("submit", function (event) {
 
     location.href = url;
 });
+
+export async function fetchJSON(url) {
+    try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch projects: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        return data;
+
+    } catch (error) {
+        console.error("Error fetching or parsing JSON data:", error);
+        return null;
+    }
+}
+
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+    if (!containerElement) {
+        console.error('Projects container not found.');
+        return;
+    }
+
+    containerElement.innerHTML = '';
+
+    if (!Array.isArray(projects) || projects.length === 0) {
+        containerElement.textContent = 'No projects available.';
+        return;
+    }
+
+    if (!/^h[1-6]$/.test(headingLevel)) {
+        headingLevel = 'h2';
+    }
+
+    for (const project of projects) {
+        const article = document.createElement('article');
+
+        const heading = document.createElement(headingLevel);
+        heading.textContent = project.title ?? 'Untitled Project';
+
+        const image = document.createElement('img');
+        image.src = project.image || 'https://vis-society.github.io/labs/2/images/empty.svg';
+        image.alt = project.title ?? 'Project image';
+
+        const description = document.createElement('p');
+        description.textContent = project.description ?? 'No description available.';
+
+        article.append(heading, image, description);
+        containerElement.appendChild(article);
+    }
+}
+
+export async function fetchGitHubData(username) {
+    return fetchJSON(`https://api.github.com/users/${username}`);
+}
