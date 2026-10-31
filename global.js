@@ -136,14 +136,19 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
         image.src = project.image || 'https://vis-society.github.io/labs/2/images/empty.svg';
         image.alt = project.title ?? 'Project image';
 
+        const details = document.createElement('div');
+        details.classList.add('project-details');
+
         const description = document.createElement('p');
         description.textContent = project.description ?? 'No description available.';
 
-        article.append(heading, image, description);
+        const year = document.createElement('p');
+        year.classList.add('project-year');
+        year.textContent = project.year ?? 'Year unknown';
+
+        details.append(description, year);
+
+        article.append(heading, image, details);
         containerElement.appendChild(article);
     }
-}
-
-export async function fetchGitHubData(username) {
-    return fetchJSON(`https://api.github.com/users/${username}`);
 }

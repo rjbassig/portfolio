@@ -160,3 +160,106 @@ h6 {
     grid-row: 2;
     margin: 0;
 }
+
+/* Lab 5: Project Years */
+
+.project-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-details p {
+    margin-top: 0.5em;
+}
+
+.project-year {
+    font-family: Baskerville, Georgia, serif;
+    font-variant-numeric: oldstyle-nums;
+    color: gray;
+    font-size: 0.9em;
+    margin-top: 0.25em !important;
+}
+
+/* Lab 5: D3 Pie Chart */
+
+#projects-pie-plot {
+    max-width: 20em;
+    margin-block: 2em;
+    overflow: visible;
+}
+
+/* Lab 5: Pie Chart Legend */
+
+.legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+    gap: 1em;
+    padding: 1em;
+    margin-block: 1em 2em;
+    border: 1px solid #555;
+    border-radius: 0.5em;
+    list-style: none;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.swatch {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    aspect-ratio: 1;
+    border-radius: 0.2em;
+    background-color: var(--color);
+    flex-shrink: 0;
+}
+
+/* Lab 5: Step 2.3 - Pie Chart and Legend Layout */
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+.container .legend {
+    flex: 1;
+}
+
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* Lab 5 - Step 5.1: Highlight hovered pie slices */
+
+#projects-pie-plot {
+  &:has(path:hover) {
+    path:not(:hover) {
+      opacity: 0.5;
+    }
+  }
+
+  path {
+    transition: 300ms;
+  }
+}
+
+/* Lab 5 - Step 5.2: Selected pie slices */
+
+.selected {
+    --color: oklch(60% 45% 0) !important;
+}
+
+#projects-pie-plot path.selected {
+    fill: var(--color);
+}
+
+#projects-pie-plot path {
+    cursor: pointer;
+}
