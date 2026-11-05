@@ -263,3 +263,44 @@ h6 {
 #projects-pie-plot path {
     cursor: pointer;
 }
+
+/* Lab 6: scoped to the Meta page to preserve existing visualizations. */
+.meta .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
+    gap: 1em 2em;
+    margin-block: 1.5em 2.5em;
+}
+.meta .stats dt { font-size: 0.9em; opacity: 0.75; }
+.meta .stats dd { margin: 0.25em 0 0; font-size: 1.3em; overflow-wrap: anywhere; }
+.meta #chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.meta #chart .gridlines { opacity: 0.15; }
+.meta #chart .gridlines .domain { display: none; }
+.meta #chart circle { fill: var(--color-accent); fill-opacity: 0.55; stroke: Canvas; stroke-width: 1; }
+.meta #chart circle.selected { fill: #c65d24; fill-opacity: 0.85; stroke: CanvasText; stroke-width: 2; }
+.meta #chart circle:hover, .meta #chart circle:focus { fill-opacity: 1; stroke: CanvasText; stroke-width: 3; }
+.meta #chart .selection { fill: var(--color-accent); fill-opacity: 0.12; stroke: var(--color-accent); stroke-dasharray: 4 3; }
+.meta .tooltip {
+    position: fixed;
+    z-index: 10;
+    pointer-events: none;
+    background: Canvas;
+    color: CanvasText;
+    border: 1px solid GrayText;
+    border-radius: 0.5em;
+    box-shadow: 0 3px 12px #0002;
+    padding: 1em;
+    margin: 0;
+    max-width: min(24em, calc(100vw - 3em));
+    grid-template-columns: auto 1fr;
+    gap: 0.3em 1em;
+    font-size: 0.85em;
+}
+.meta .tooltip:not([hidden]) { display: grid; }
+.meta .tooltip dt { opacity: 0.7; }
+.meta .tooltip dd { margin: 0; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+    .meta nav { flex-wrap: wrap; margin-top: 3em; }
+    .meta nav a { flex-basis: 25%; }
+    .meta h1 { font-size: 300%; }
+}
