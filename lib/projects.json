@@ -2,7 +2,7 @@
   {
     "title": "Boston Bike Traffic",
     "year": 2026,
-    "image": "https://rjbassig.github.io/portfolio/images/boston-bike-traffic.png",
+    "image": "https://rjbassig.github.io/portfolio/images/boston-bike-traffic.png?v=2",
     "description": "Explore March 2024 Bluebikes traffic across Boston and Cambridge with a Mapbox map, bike lanes, station tooltips, and interactive time-of-day filtering.",
     "url": "https://rjbassig.github.io/boston-bike-traffic/"
   },
