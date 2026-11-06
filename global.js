@@ -131,7 +131,14 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
         const article = document.createElement('article');
 
         const heading = document.createElement(headingLevel);
-        heading.textContent = project.title ?? 'Untitled Project';
+        if (project.url) {
+            const link = document.createElement('a');
+            link.href = project.url;
+            link.textContent = project.title ?? 'Untitled Project';
+            heading.append(link);
+        } else {
+            heading.textContent = project.title ?? 'Untitled Project';
+        }
 
         const image = document.createElement('img');
         image.src = project.image || 'https://vis-society.github.io/labs/2/images/empty.svg';
@@ -152,4 +159,8 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
         article.append(heading, image, details);
         containerElement.appendChild(article);
     }
+}
+
+export function fetchGitHubData(username) {
+    return fetchJSON(`https://api.github.com/users/${encodeURIComponent(username)}`);
 }
