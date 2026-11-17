@@ -215,6 +215,10 @@ function setupTimeline() {
     scrollama().setup({ step: '#scatter-story .step', offset: 0.65 }).onStepEnter(({ index }) => {
         const commit = commits[index];
         updateTime(commit.datetime);
+    }).onStepExit(() => {
+        // A large scroll jump can skip intermediate step-entry events.
+        const index = steps.nodes().findLastIndex(step => step.getBoundingClientRect().top <= window.innerHeight * 0.65);
+        if (index >= 0) updateTime(commits[index].datetime);
     });
     updateTime(timeScale.invert(100));
 }
