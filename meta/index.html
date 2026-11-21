@@ -20,17 +20,18 @@
         <section id="scrolly-1">
             <div id="scatter-story" aria-label="Commit narrative"></div>
             <div id="scatter-plot">
-                <label for="commit-progress">Commit timeline</label>
-                <input id="commit-progress" type="range" min="0" max="100" value="100" step="any">
-                <time id="commit-time"></time>
+                <label for="commit-progress">Commit timeline
+                    <input id="commit-progress" type="range" min="0" max="100" value="100" step="any">
+                    <time id="commit-time"></time>
+                </label>
                 <div id="chart"></div>
+                <p id="selection-count" aria-live="polite">No commits selected</p>
+                <h2>Selected language breakdown</h2>
+                <dl id="language-breakdown" class="stats"></dl>
             </div>
         </section>
         <h2>File sizes</h2>
         <dl id="files"></dl>
-        <p id="selection-count" aria-live="polite">No commits selected</p>
-        <h2>Selected language breakdown</h2>
-        <dl id="language-breakdown" class="stats"></dl>
     </main>
     <dl id="commit-tooltip" class="info tooltip" hidden>
         <dt>Commit</dt><dd><a href="" id="commit-link" target="_blank" rel="noopener noreferrer"></a></dd>
